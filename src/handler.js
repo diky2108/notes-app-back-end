@@ -65,7 +65,7 @@ const getNoteByIdHandler = (request, h) => {
   return response;
 };
 
-const editNotebyIdHandler = (request, h) => {
+const editNoteByIdHandler = (request, h) => {
   const { id } = request.params;
 
   const { title, tags, body } = request.payload;
@@ -112,9 +112,10 @@ const deleteNoteByIdHandler = (request, h) => {
     response.code(200);
     return response;
   }
+
   const response = h.response({
     status: 'fail',
-    message: 'Catatan gagal dihapus karena id tidak ditemukan',
+    message: 'Catatan gagal dihapus. Id tidak ditemukan',
   });
   response.code(404);
   return response;
@@ -124,6 +125,6 @@ module.exports = {
   addNoteHandler,
   getAllNotesHandler,
   getNoteByIdHandler,
-  editNotebyIdHandler,
+  editNoteByIdHandler,
   deleteNoteByIdHandler,
 };
